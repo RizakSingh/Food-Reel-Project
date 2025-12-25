@@ -12,4 +12,19 @@ async function registerUser(req,res) {
     if(ExistingUser){
         return res.status(400).json({messsage :"user already exists "})
     }
+    const hashedpassword = await bcrypt.hash(password,10)
+    const newUser  = await  user.create({
+        email,
+        password:hashedpassword
+    })
+    const token = jwt.sign({id:newUser._id},process.env.JWT_TOKEN)
+    res.cookie("token",token,{
+        httpOnly:true,
+        sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    })
+    return res.status(201).json ({message:"user registered successfully "})
+}
+module.exports= {
+    registerUser,
 }
