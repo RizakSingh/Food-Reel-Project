@@ -1,5 +1,5 @@
 const mongoose = require ('mongoose')
-const { renderToString } = require('react-dom/server')
+
 
 const User = new mongoose.Schema({
     email:{

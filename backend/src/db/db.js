@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose')
 require('dotenv').config()
 function  mongo () {mongoose.connect (process.env.MONGO_URL)
-    .then(console.log("DB connected"))
+    .then(() => console.log("DB connected"))
     .catch((err)=>{ console.log(err)
 })} 
 module.exports = mongo
