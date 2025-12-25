@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose')
 const { renderToString } = require('react-dom/server')
 
-const user = new mongoose.Schema({
+const User = new mongoose.Schema({
     email:{
         type:String,
         required:true,
@@ -14,5 +14,5 @@ const user = new mongoose.Schema({
     }
    
 })
-const userModel = mongoose.model('user',user)
-module.exports = userModel
+const UserModel = mongoose.model('User',User)
+module.exports = UserModel
